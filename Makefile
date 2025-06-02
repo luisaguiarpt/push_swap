@@ -2,7 +2,8 @@ CC=cc
 FLAGS=-Wall -Wextra -Werror -g
 INCL=libft
 
-SRCS=
+SRCS=init.c list.c messages.c push.c push_swap.c reverse_rotate.c rotate.c \
+	 swap.c
 
 OBJS=$(SRCS:%.c=%.o)
 

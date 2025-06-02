@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 12:40:56 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:48:16 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/06/02 17:34:13 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/06/02 17:46:13 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap.c"
 
-int	main(int ac, char **av)
+// Check to see if all the elements in the list are integers
+int	check_list(char **array)
 {
-	t_stacks	*s;
+	int	i;
 
-	
-	if (ac <= 2)
-		return (disp_error(NOARGS));
-	if (!check_list
+	i = 0;
+	while (array[i])
+	{
+		if (!ft_isint(array[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

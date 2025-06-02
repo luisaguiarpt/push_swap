@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:55:22 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 15:27:16 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/02 16:58:41 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	lst_delone(t_list **lst)
 	*lst = NULL;
 }
 
-int	lst_size(t_list **lst)
+int	lst_size(t_list **head)
 {
 	t_list	*ptr;
 	int		size;
 
-	ptr = *lst;
+	ptr = *head;
 	size = 0;
 	while (ptr)
 	{
@@ -47,4 +47,28 @@ int	lst_size(t_list **lst)
 		ptr = ptr->next;
 	}
 	return (size);
+}
+
+t_list	*lst_last(t_list **head)
+{
+	t_list	*last;
+
+	last = *head;
+	if (lst_size(head) == 0)
+		return (NULL);
+	while (last->next)
+		last = last->next;
+	return (last);
+}
+
+t_list	*lst_2ndlast(t_list **head)
+{
+	t_list	*last;
+	t_list	*second_last;
+
+	last = lst_last(head);
+	second_last = *head;
+	while (second_last->next != last)
+		second_last = second_last->next;
+	return (second_last);
 }

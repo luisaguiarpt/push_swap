@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 12:40:56 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:48:16 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_isint(char *str)
 {
-	t_stacks	*s;
+	int	i;
 
-	
-	if (ac <= 2)
-		return (disp_error(NOARGS));
-	if (!check_list
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+			i++;
+		else
+			return (0);
+	}
+	return (1);
 }

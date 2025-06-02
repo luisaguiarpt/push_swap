@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:55:22 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 15:33:19 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:06:26 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,34 @@ int	main(void)
 	prt_lst(s->a);
 	ft_printf("List B size: %i\n", lst_size(s->b));
 	prt_lst(s->b);
+
+	ft_printf("----------Check last B-----------\n");
+	ft_printf("Last B: %i\n", lst_last(s->b)->value);
+	ft_printf("Second last B: %i\n", lst_2ndlast(s->b)->value);
+
+	ft_printf("----------Check last A-----------\n");
+	ft_printf("Last A: %i\n", lst_last(s->a)->value);
+	ft_printf("Second last A: %i\n", lst_2ndlast(s->a)->value);
+
+	ft_printf("----------Rotate A-----------\n");
+	ra(s);
+	ft_printf("List A size: %i\n", lst_size(s->a));
+	prt_lst(s->a);
+	ft_printf("List B size: %i\n", lst_size(s->b));
+	prt_lst(s->b);
+
+	ft_printf("----------Reverse rotate A-----------\n");
+	rra(s);
+	ft_printf("List A size: %i\n", lst_size(s->a));
+	prt_lst(s->a);
+	ft_printf("List B size: %i\n", lst_size(s->b));
+	prt_lst(s->b);
+
+	ft_printf("----------Reverse rotate Both-----------\n");
+	rrr(s);
+	ft_printf("List A size: %i\n", lst_size(s->a));
+	prt_lst(s->a);
+	ft_printf("List B size: %i\n", lst_size(s->b));
+	prt_lst(s->b);
+
 }
