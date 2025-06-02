@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 19:55:17 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/29 12:50:18 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:52:22 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_slist
 
 int		ft_abs(int n);
 double	ft_abs_dbl(double n);
+double	ft_atod(char *str);
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -32,6 +33,7 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
+int		ft_isdouble(char *str);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
 int		ft_max(int a, int b);

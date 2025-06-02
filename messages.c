@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   messages.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 12:40:56 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/30 17:55:57 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/05/30 17:48:15 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/30 17:55:04 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int	disp_error(int error)
 {
-	if (ac == 2)
-		return (disp_error(NOARGS));
-	
+	if (error == 1)
+	{
+		ft_printf("No arguments passed.\n");
+		ft_printf("Usage: ./push_swap <list of values>\n");
+	}
 }
