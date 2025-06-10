@@ -12,17 +12,32 @@
 
 #include "push_swap.h"
 
-void	init_stack_a(char *str, t_stacks *s)
+t_stacks	*init_stacks(void)
 {
-	char	**char_list;
+	t_stacks	*stacks;
+
+	stacks = malloc(sizeof(t_stacks));
+	if (!stacks)
+		exit(1);
+	stacks->a = malloc(sizeof(t_list));
+	if (!stacks->a)
+		free_malloc(stacks);
+	stacks->b = malloc(sizeof(t_list));
+	if (!stacks->b)
+		free_malloc(stacks);
+	return (stacks);
+}
+
+void	fill_stack_a(char **char_list, t_stacks *s)
+{
 	int		i;
 
-	char_list = ft_split(str);
-	if (!check_list(char_list))
-		free_list(char_list);
+	if (!check_array(char_list))
+		free_all(s);
 	i = 0;
 	while (char_list[i])
 	{
-		s->a
+		lstadd_back(s->a, lst_new(ft_atoi(char_list[i])));
+		i++;
 	}
 }

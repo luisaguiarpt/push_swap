@@ -23,7 +23,7 @@ GNLSRCS=$(addprefix $(GNLDIR)/, $(GNLSRC))
 GNLO=$(GNLSRCS:.c=.o)
 
 PRINTFDIR=ft_printf
-PRINTFINC=$(PRINTFDIR)/includes/ft_printf.h
+PRINTFINC=$(PRINTFDIR)/includes
 PRINTFSRC=ft_nbrsize.c ft_printf.c ft_printf_parsers.c \
 		  ft_printf_parser_utils.c ft_printf_utils.c pos_diff.c \
 		  putchar_format.c puthex_format.c putnbr_format.c putnbr_u_format.c \

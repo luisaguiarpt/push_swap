@@ -12,25 +12,18 @@
 
 #include "push_swap.h"
 
-t_list	*lst_new(int value)
+void	lst_clear(t_list **lst)
 {
-	t_list	*new;
+	t_list	*tmp;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->next = NULL;
-	new->value = value;
-	new->cost = 0;
-	new->i = 0;
-	return (new);
-}
-
-void	lst_delone(t_list **lst)
-{
 	if (!lst)
 		return ;
-	free(*lst);
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free(*lst);
+		*lst = tmp;
+	}
 	*lst = NULL;
 }
 

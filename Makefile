@@ -2,8 +2,8 @@ CC=cc
 FLAGS=-Wall -Wextra -Werror -g
 INCL=libft
 
-SRCS=init.c list.c messages.c push.c push_swap.c reverse_rotate.c rotate.c \
-	 swap.c
+SRCS=checks.c error.c init.c free.c list_init.c list_utils.c push.c \
+	 push_swap.c reverse_rotate.c rotate.c swap.c
 
 OBJS=$(SRCS:%.c=%.o)
 
@@ -12,8 +12,8 @@ NAME=push_swap
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(FLAGS) $(OBJS) $(MLX) $(LIBFT) -o $@ -I$(INCS) $(LIBS)
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) -o $@
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@ -I$(INCL)

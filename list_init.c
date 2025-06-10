@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:34:13 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:46:13 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/05/29 12:55:22 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/06/02 16:58:41 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Check to see if all the elements in the list are integers
-int	check_array(char **array)
+t_list	*lst_new(int value)
 {
-	int	i;
+	t_list	*new;
 
-	i = 0;
-	if (!array)
-		return (1);
-	while (array[i])
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->next = NULL;
+	new->value = value;
+	new->cost = 0;
+	new->i = 0;
+	return (new);
+}
+
+void	lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*tmp;
+
+	if (!lst)
+		return ;
+	if (!*lst)
 	{
-		if (!ft_isint(array[i]))
-			return (0);
-		i++;
+		*lst = new;
+		return ;
 	}
-	return (1);
+	tmp = *lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }
