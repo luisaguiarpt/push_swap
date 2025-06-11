@@ -65,3 +65,21 @@ t_list	*lst_2ndlast(t_list **head)
 		second_last = second_last->next;
 	return (second_last);
 }
+
+void	lst_copy(t_list **orig, t_list **dest)
+{
+	t_list	*tmp;
+	t_list	*tmp_o;
+
+	tmp_o = *orig;
+	while (tmp_o)
+	{
+		tmp = lst_new(tmp_o->value);
+		tmp->i = tmp_o->i;
+		tmp->chunk = tmp_o->chunk;
+		tmp->cost = tmp_o->cost;
+		lstadd_back(dest, tmp);
+		tmp_o = tmp_o->next;
+		tmp = (*dest)->next;
+	}
+}

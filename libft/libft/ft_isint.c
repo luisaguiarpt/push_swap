@@ -19,6 +19,8 @@ int	ft_isint(char *str)
 	i = 0;
 	while (str[i] == ' ' || str[i] == '\t')
 		i++;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]))

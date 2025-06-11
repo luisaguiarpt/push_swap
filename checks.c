@@ -23,8 +23,35 @@ int	check_array(char **array)
 	while (array[i])
 	{
 		if (!ft_isint(array[i]))
-			return (0);
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
+}
+
+int	check_dup(char **array)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (array[i])
+	{
+		j = 0;
+		while (array[j])
+		{
+			if (!ft_strcmp(array[i], array[j]) && i != j)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+void	check_input(char **array)
+{
+	if (check_array(array) || check_dup(array))
+		exit_error();
+	return ;
 }

@@ -12,32 +12,17 @@
 
 #include "push_swap.h"
 
-// Free all the nodes in an array
-void	free_array(char ***char_array)
-{
-	int		i;
-
-	i = 0;
-	if (!*char_array)
-		return ;
-	while (*char_array[i])
-	{
-		free(*char_array[i]);
-		i++;
-	}
-	free(*char_array);
-	*char_array = NULL;
-}
-
-// Free stack and list pointers if any of the initial mallocs fail
-void	free_malloc(t_stacks *s)
+// Free stack and list pointers if in case of error 
+void	free_error(t_stacks *s)
 {
 	if (!s)
 		exit_error();
 	if (s->a)
-		free(s->a);
+		lst_clear(s->a);
 	if (s->b)
-		free(s->b);
+		lst_clear(s->b);
+	free(s->a);
+	free(s->b);
 	free(s);
 	exit_error();
 }
@@ -49,5 +34,8 @@ void	free_all(t_stacks *s)
 		lst_clear(s->a);
 	if (s->b)
 		lst_clear(s->b);
+	free(s->a);
+	free(s->b);
+	free(s->chunk_sizes);
 	free(s);
 }

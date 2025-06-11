@@ -2,8 +2,10 @@ CC=cc
 FLAGS=-Wall -Wextra -Werror -g
 INCL=libft
 
-SRCS=checks.c error.c init.c free.c list_init.c list_utils.c push.c \
-	 push_swap.c reverse_rotate.c rotate.c swap.c
+SRCS=checks.c error.c free.c get_chunk.c get_cost.c get_index.c get_position.c \
+	 init.c \
+	 list_init.c list_utils.c push.c push_swap.c reverse_rotate.c rotate.c \
+	 sorter.c swap.c
 
 OBJS=$(SRCS:%.c=%.o)
 
