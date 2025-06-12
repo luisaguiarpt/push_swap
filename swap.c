@@ -28,20 +28,32 @@ int	swap(t_list **head)
 int	sa(t_stacks *s)
 {
 	if (swap(s->a))
+	{
+		if (s->print)
+			ft_printf("sa\n");
 		return (1);
+	}
 	return (0);
 }
 
 int	sb(t_stacks *s)
 {
 	if (swap(s->b))
+	{
+		if (s->print)
+			ft_printf("sb\n");
 		return (1);
+	}
 	return (0);
 }
 
 int	ss(t_stacks *s)
 {
 	if (swap(s->a) && swap(s->b))
+	{
+		if (s->print)
+			ft_printf("ss\n");
 		return (1);
+	}
 	return (0);
 }

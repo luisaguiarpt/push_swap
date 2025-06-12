@@ -38,7 +38,7 @@ void	prt_stacks(t_stacks *s)
 
 	ptr_a = *s->a;
 	ptr_b = *s->b;
-	ft_printf("\n");
+	ft_printf("-------------\n");
 	while (i < size_a || i < size_b)
 	{
 		if (size_a > size_b + i)
@@ -63,6 +63,7 @@ void	prt_stacks(t_stacks *s)
 	}
 	ft_printf("-----\n");
 	ft_printf("a | b\n");
+	ft_printf("-------------\n");
 }
 
 int	main(int ac, char **av)
@@ -74,28 +75,6 @@ int	main(int ac, char **av)
 	check_input(&av[1]);
 	s = init_stacks();
 	fill_stack_a(&av[1], s);
-	get_cost(s);
-	ft_printf("Size: %d\n", s->size);
-	prt_lst(s->a);
-	s->chunk_sizes = get_chunk_sizes(s);
-	ft_printf("Nbr of chunks: %d\n", s->nbr_chunks);
-	for (int i = 0; i < s->nbr_chunks; i++)
-		ft_printf("Chunk %d size: %d\n", i, s->chunk_sizes[i]);
-	get_cheapest_chunk(s);
-//	prt_stacks(s);
-//	pb(s);
-//	prt_stacks(s);
-//	pb(s);
-//	prt_stacks(s);
-//	pb(s);
-//	prt_stacks(s);
-//	pb(s);
-//	prt_stacks(s);
-//	pb(s);
-//	prt_stacks(s);
-//	pb(s);
-//	prt_stacks(s);
-//	pa(s);
-//	prt_stacks(s);
+	sorter(s);
 	free_all(s);
 }

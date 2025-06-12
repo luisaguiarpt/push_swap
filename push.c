@@ -28,13 +28,21 @@ int	push(t_list **from, t_list **to)
 int	pa(t_stacks *s)
 {
 	if (push(s->b, s->a))
+	{
+		if (s->print)
+			ft_printf("pa\n");
 		return (1);
+	}
 	return (0);
 }
 
 int	pb(t_stacks *s)
 {
 	if (push(s->a, s->b))
+	{
+		if (s->print)
+			ft_printf("pb\n");
 		return (1);
+	}
 	return (0);
 }

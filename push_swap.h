@@ -33,7 +33,12 @@ typedef struct s_stacks
 	int		size;
 	int		nbr_chunks;
 	int		*chunk_sizes;
+	int		print;
 }				t_stacks;
+
+// TEMPORARY FUNCTIONS
+void	prt_lst(t_list **lst);
+void	prt_stacks(t_stacks *s);
 
 // Swap operations - swap.c
 int			swap(t_list **head);
@@ -65,6 +70,7 @@ void		check_input(char **array);
 
 // Initializer functions - init.c
 t_stacks	*init_stacks(void);
+t_stacks	*copy_stack(t_stacks *s);
 void		fill_stack_a(char **char_list, t_stacks *s);
 
 // List initializer functions - list_init.c
@@ -94,18 +100,18 @@ int			get_chunk(t_stacks *s, int i);
 int			*get_chunk_sizes(t_stacks *s);
 int			get_nbr_chunks(t_stacks *s);
 int			get_cheapest_chunk(t_stacks *s);
-t_list		*get_cheapest_in_chunk(t_list **lst, int chunk);
 
 // Position related functions - get_position.c
 void		upd_pos(t_list **lst);
 
 // Sorter related functions - solver.c
+void		sorter(t_stacks *s);
+t_list		*get_cheapest_in_chunk(t_list **lst, int chunk);
 int			push_cheapest_b(t_stacks *s, int chunk);
 int			push_chunk_b(t_stacks *s, int chunk);
 
 // Freeing functions - free.c
 void		free_all(t_stacks *s);
-void		free_array(char ***char_array);
 void		free_error(t_stacks *s);
 
 // Exit functions - error.c

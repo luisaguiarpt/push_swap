@@ -30,20 +30,32 @@ int	rev_rotate(t_list **head)
 int	rra(t_stacks *s)
 {
 	if (rev_rotate(s->a))
+	{
+		if (s->print)
+			ft_printf("rra\n");	
 		return (1);
+	}
 	return (0);
 }
 
 int	rrb(t_stacks *s)
 {
 	if (rev_rotate(s->b))
+	{
+		if (s->print)
+			ft_printf("rrb\n");	
 		return (1);
+	}
 	return (0);
 }
 
 int	rrr(t_stacks *s)
 {
 	if (rev_rotate(s->a) && rev_rotate(s->b))
+	{
+		if (s->print)
+			ft_printf("rrr\n");	
 		return (1);
+	}
 	return (0);
 }

@@ -17,7 +17,7 @@ int	get_chunk(t_stacks *s, int i)
 	int		chunk_size;
 	
 	if (s->size < 100)
-		chunk_size = s->size / ft_sqrt_approx(s->size);
+		chunk_size = ft_sqrt_approx(s->size);
 	else
 		chunk_size = 25;
 	return (i / chunk_size);
@@ -75,44 +75,3 @@ t_list	*get_cheapest_in_chunk(t_list **lst, int chunk)
 	}
 	return (cheapest);
 }
-
-void	prt_stacks(t_stacks *s);
-
-int	get_cheapest_chunk(t_stacks *s)
-{
-	t_stacks	*copy;
-	int			min;
-	int			tmp;
-	int			i;
-
-	i = 0;
-	while (i < s->nbr_chunks)
-	{
-		min = INT_MAX;
-		copy = init_stacks();
-		lst_copy(s->a, copy->a);
-		lst_copy(s->b, copy->b);
-		copy->size = s->size;
-		copy->nbr_chunks = s->nbr_chunks;
-		ft_printf("----Chunk %d----\nBefore\n", i);
-		prt_stacks(copy);
-		tmp = push_chunk_b(copy, i);
-		if (tmp < min)
-			min = tmp;
-		ft_printf("After (%d moves)\n", min);
-		prt_stacks(copy);
-		free_all(copy);
-		i++;
-	}
-	return (tmp);
-}
-
-//int	get_chunk_cost(t_stacks *s, int chunk)
-//{
-//	int	cost;
-//	int	median;
-//
-//	cost = 0;
-//	median = s->size / 2;
-//	
-//}

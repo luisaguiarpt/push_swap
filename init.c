@@ -29,7 +29,20 @@ t_stacks	*init_stacks(void)
 	*stacks->b = NULL;
 	stacks->chunk_sizes = NULL;
 	stacks->nbr_chunks = 0;
+	stacks->print = 1;
 	return (stacks);
+}
+
+t_stacks	*copy_stack(t_stacks *s)
+{
+	t_stacks	*copy;
+
+	copy = init_stacks();
+	lst_copy(s->a, copy->a);
+	lst_copy(s->b, copy->b);
+	copy->size = s->size;
+	copy->nbr_chunks = s->nbr_chunks;
+	return (copy);
 }
 
 void	fill_stack_a(char **char_list, t_stacks *s)

@@ -12,6 +12,44 @@
 
 #include "push_swap.h"
 
+void	sorter(t_stacks *s)
+{
+	int	i;
+	int	cheapest;
+
+	i = 0;
+	while (i != s->nbr_chunks)
+	{
+		cheapest = get_cheapest_chunk(s);
+		prt_lst(s->a);
+		ft_printf("Cheapest chunk: %d\n", cheapest);
+		push_chunk_b(s, cheapest);
+		prt_stacks(s);
+		i++;
+	}
+}
+
+int	get_cheapest_chunk(t_stacks *s)
+{
+	t_stacks	*copy;
+	int			min;
+	int			tmp;
+	int			i;
+
+	i = 0;
+	while (i < s->nbr_chunks)
+	{
+		min = INT_MAX;
+		copy = copy_stack(s);
+		tmp = push_chunk_b(copy, i);
+		if (tmp < min)
+			min = tmp;
+		free_all(copy);
+		i++;
+	}
+	return (tmp);
+}
+
 int	push_chunk_b(t_stacks *s, int chunk)
 {
 	int		sum_cost;
@@ -41,16 +79,10 @@ int	push_cheapest_b(t_stacks *s, int chunk)
 			ra(s);
 		else
 			rra(s);
+		prt_stacks(s);
 		upd_pos(s->a);
 	}
 	pb(s);
+	prt_stacks(s);
 	return (cheapest->cost);
 }
-
-//void	sorter(t_stacks *s)
-//{
-//	int	i;
-//
-//	i = 0;
-//	while (
-//}

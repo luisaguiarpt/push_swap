@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -78,6 +78,7 @@ void	lst_copy(t_list **orig, t_list **dest)
 		tmp->i = tmp_o->i;
 		tmp->chunk = tmp_o->chunk;
 		tmp->cost = tmp_o->cost;
+		tmp->print = 0;
 		lstadd_back(dest, tmp);
 		tmp_o = tmp_o->next;
 		tmp = (*dest)->next;
