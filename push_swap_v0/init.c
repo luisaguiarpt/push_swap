@@ -42,6 +42,7 @@ t_stacks	*copy_stack(t_stacks *s)
 	lst_copy(s->b, copy->b);
 	copy->size = s->size;
 	copy->nbr_chunks = s->nbr_chunks;
+	copy->print = 0;
 	return (copy);
 }
 

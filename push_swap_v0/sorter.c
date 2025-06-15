@@ -29,6 +29,12 @@ void	sorter(t_stacks *s)
 	}
 }
 
+/**
+ * @brief	Creates a copy of the original stack and pushes all the chunks,
+ * one at a time, to find out which is the cheapest chunk to push
+ * @param	s	Stack to copy
+ * @return	Number of the cheapest chunk
+ */
 int	get_cheapest_chunk(t_stacks *s)
 {
 	t_stacks	*copy;
@@ -50,6 +56,13 @@ int	get_cheapest_chunk(t_stacks *s)
 	return (tmp);
 }
 
+/**
+ * @brief	Push a chunk into stack b
+ * @param	s		Stack in which the operations are being performed
+ * @param	chunk	Chunk out of which to push all the elements
+ * @return	Amount of operations needed to push all the elements of a chunk
+ * @see		get_chunk_sizes(); get_cost();
+ */
 int	push_chunk_b(t_stacks *s, int chunk)
 {
 	int		sum_cost;
@@ -67,6 +80,12 @@ int	push_chunk_b(t_stacks *s, int chunk)
 	return (sum_cost);
 }
 
+/**
+ * @brief	Push the cheapest element of a chunk to stack b
+ * @param	s		Stack in which the operations are being performed
+ * @param	chunk	Chunk out of which to push the cheapest element
+ * @return	Cost of pushing the cheapest element
+ */
 int	push_cheapest_b(t_stacks *s, int chunk)
 {
 	t_list	*cheapest;
