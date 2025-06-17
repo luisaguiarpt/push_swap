@@ -77,7 +77,7 @@ void		fill_stack_a(char **char_list, t_stacks *s);
 t_list		*lst_new(int value);
 void		lstadd_back(t_list **lst, t_list *new);
 void		lstadd_front(t_list **lst, t_list *new);
-t_list		*lst_find(t_list **head, int index);
+t_list		*lst_find(t_list **head, int value, char attr);
 
 // List utility functions - list_utils.c
 void		lst_clear(t_list **lst);
@@ -89,7 +89,6 @@ void		lst_copy(t_list **orig, t_list **dest);
 // List sort functions - list_sort.c
 void		list_swap(t_list **begin, t_list **curr, t_list **prev, int *f);
 void		sort_list(t_list **begin, int (*cmp)());
-t_list		*lst_find(t_list **head, int index);
 
 // Index related functions - index_utils.c
 void		get_index_and_chunk(t_stacks *s);

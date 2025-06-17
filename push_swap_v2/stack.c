@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-t_list	*lst_new(int value)
+t_stack	*lst_new(int value)
 {
-	t_list	*new;
+	t_stack	*new;
 
-	new = malloc(sizeof(t_list));
+	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
 	new->next = NULL;
@@ -24,13 +24,12 @@ t_list	*lst_new(int value)
 	new->cost = 0;
 	new->chunk = 0;
 	new->i = 0;
-	new->curr_pos = 0;
 	return (new);
 }
 
-void	lstadd_back(t_list **lst, t_list *new)
+void	lstadd_back(t_stack **lst, t_stack *new)
 {
-	t_list	*tmp;
+	t_stack	*tmp;
 
 	if (!lst)
 		return ;
@@ -45,7 +44,7 @@ void	lstadd_back(t_list **lst, t_list *new)
 	tmp->next = new;
 }
 
-void	lstadd_front(t_list **lst, t_list *new)
+void	lstadd_front(t_stack **lst, t_stack *new)
 {
 	if (!lst)
 		return ;
@@ -53,9 +52,9 @@ void	lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-t_list	*lst_find(t_list **head, int value, char attr)
+t_stack	*lst_find(t_stack **head, int value, char attr)
 {
-	t_list	*lst;
+	t_stack	*lst;
 
 	lst = *head;
 	while (attr == 'i' && lst)

@@ -21,9 +21,11 @@ void	sorter(t_stacks *s)
 	while (i != s->nbr_chunks)
 	{
 		upd_lst_cost(s);
+		ft_printf("-----\nChecking cheapest\n----\n");
 		cheap_chunk = get_cheapest_chunk(s);
 		prt_lst(s->a);
 		ft_printf("Cheapest chunk: %d\n", cheap_chunk);
+		ft_printf("-----\nFor real\n----\n");
 		push_chunk_b(s, cheap_chunk);
 		prt_stacks(s);
 		i++;
@@ -55,6 +57,7 @@ int	get_cheapest_chunk(t_stacks *s)
 			min = tmp;
 			cheapest = i;
 		}
+		ft_printf("Cheapest chunk: %d (%d)\n", cheapest, min);
 		free_all(copy);
 		i++;
 	}
@@ -98,10 +101,9 @@ int	move_to_position(t_stacks *s, int chunk)
 	t_list	*cheap;
 	int		tot_cost;
 
-	upd_pos(s);
 	cheap = get_cheapest_in_chunk(s->a, chunk);
-	tot_cost = ft_abs(cheap->cost);
-	target = lst_find(s->a, cheap->i - 1);
+	tot_cost = ft_abs(cheap->cost) - 1;
+	target = lst_find(s->b, cheap->i - 1, 'i');
 	if (target)
 	{
 		tot_cost += ft_abs(target->cost);
@@ -121,6 +123,15 @@ int	move_to_position(t_stacks *s, int chunk)
 	return (tot_cost);
 }
 
+//t_list	*find_target(t_stacks *s, int chunk)
+//{
+//	t_list	*target;
+//
+//	target = lst_find(s->b, cheap->i - 1);
+//	if (!target)
+//		target = lst_find(s->b, cheap->i + 1);
+//}
+
 /**
  * @brief	Push the cheapest element of a chunk to stack b
  * @param	s		Stack in which the operations are being performed
@@ -129,20 +140,15 @@ int	move_to_position(t_stacks *s, int chunk)
  */
 int	push_cheapest_b(t_stacks *s, int chunk)
 {
-	t_list	*cheap;
+	int		tot_cost;
 
-	upd_pos(s);
-	cheap = get_cheapest_in_chunk(s->a, chunk);
-	while (cheap->curr_pos != 0)
+	tot_cost = 0;
+	while (lst_find(s->a, chunk, 'c'))
 	{
-		upd_pos(s);
-		if (cheap->curr_pos <= lst_size(s->a) / 2)
-			ra(s);
-		else
-			rra(s);
+		upd_lst_cost(s);
+		tot_cost += move_to_position(s, chunk);
+		pb(s);
 		prt_stacks(s);
 	}
-	pb(s);
-	prt_stacks(s);
-	return (cheap->cost);
+	return (tot_cost);
 }
