@@ -51,7 +51,10 @@ static void	assign_index_chunk(t_core *core, int *array, int size)
 			if (array[i] == (*head)->value)
 			{
 				(*head)->i = i;
-				(*head)->chunk = i / ft_sqrt_approx(core->size);
+				if (core->size <= 100)
+					(*head)->chunk = i / 5;
+				else
+					(*head)->chunk = i / 11;
 				if ((*head)->chunk >= core->nbr_chunks)
 					core->nbr_chunks = (*head)->chunk + 1;
 			}
