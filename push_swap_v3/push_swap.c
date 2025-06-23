@@ -1,15 +1,22 @@
 #include "push_swap.h"
 
+// Need to check if number is int (bigger or smaller than - use long)
+// need to check if it's sorted to begin with to prevent starting if it's already sorted
+
 int	main(int ac, char **av)
 {
 	t_core	*core;
+	char	**input;
 
 	if (ac <= 2)
 		exit_error();
-	check_input(&av[1]);
+	input = check_input(&av[1], ac);
 	core = init_core();
-	init_stack_a(core, &av[1]);
+	init_stack_a(core, input);
+	if (core->size == 3)
+		sort_small(core);
 	sort(core);
+	free_all(core);
 }
 
 void	prt_lst(t_stack **lst)

@@ -6,13 +6,13 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:55:22 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/23 11:58:22 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:33:18 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*lst_new(int value)
+t_stack	*lst_new(long int value)
 {
 	t_stack	*new;
 

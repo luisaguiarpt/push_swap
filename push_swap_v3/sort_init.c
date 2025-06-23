@@ -10,12 +10,13 @@ void	init_stack_a(t_core *core, char **char_arr)
 	i = 0;
 	while (char_arr[i])
 	{
-		lstadd_back(core->a, lst_new(ft_atoi(char_arr[i])));
+		lstadd_back(core->a, lst_new(ft_atol(char_arr[i])));
 		i++;
 	}
 	core->size = lst_size(core->a);
 	core->sorted_array = values_array(core, core->size);
 	sort_array(core->sorted_array, core->size);
+	check_int(core);
 	assign_index(core);
 }
 

@@ -1,6 +1,8 @@
 # Misc
 /push_swap_v2/push_swap_visualizer/*
+/push_swap_v3/push_swap_visualizer/*
 /checker_linux/*
+
 # Prerequisites
 *.d
 

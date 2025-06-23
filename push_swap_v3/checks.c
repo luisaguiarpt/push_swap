@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:34:13 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:46:13 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:26:49 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,42 @@ int	check_dup(char **array)
 	return (0);
 }
 
-void	check_input(char **array)
+char	**check_input(char **av, int ac)
 {
-	if (check_array(array) || check_dup(array))
+	char **array;
+
+	array = NULL;
+	if (ac == 1)
 		exit_error();
-	return ;
+	else if (ac == 2)
+	{
+		array = ft_split(av[1], ' ');
+		if (check_array(array) || check_dup(array))
+		{
+			free(array);
+			exit_error();
+		}
+	}
+	else if (ac > 2)
+	{
+		if (check_array(av) || check_dup(av))
+			exit_error();
+		array = av;
+	}
+	return (array);
+}
+
+void	check_int(t_core *core)
+{
+	int		i;
+	t_stack	*lst;
+
+	i = 0;
+	lst = *core->a;
+	while (lst)
+	{
+		if (lst->value > INT_MAX || lst->value < INT_MIN)
+			free_error(core);
+		lst = lst->next;
+	}
 }

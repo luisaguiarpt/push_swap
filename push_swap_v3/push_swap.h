@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:46:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/23 12:37:14 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:33:30 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 typedef struct s_stack
 {
 	struct s_stack	*next;
-	int				value;
+	long int		value;
 	int				index;
 	int				moves;
 	int				cost;
@@ -44,6 +44,8 @@ void		init_stack_a(t_core *core, char **char_arr);
 // Main sort - sort.c
 void		sort(t_core *core);
 void		move_cheapest(t_core *core);
+void		rot_max_top(t_core *core);
+void		push_all_a(t_core *core);
 
 // Sort utilities - sort_utils.c
 int			is_sorted(t_stack **head);
@@ -88,14 +90,15 @@ int			rrr(t_core *core);
 // Checker functions - checks.c
 int			check_array(char **array);
 int			check_dup(char **array);
-void		check_input(char **array);
+char		**check_input(char **av, int ac);
+void		check_int(t_core *core);
 
 // Core functions - core_utils.c
 t_core		*init_core(void);
 t_core		*copy_core(t_core *core);
 
 // Stack functions - stack.c
-t_stack		*lst_new(int value);
+t_stack		*lst_new(long int value);
 void		lstadd_back(t_stack **lst, t_stack *new);
 void		lstadd_front(t_stack **lst, t_stack *new);
 t_stack		*lst_find(t_stack **head, int value, char attr);

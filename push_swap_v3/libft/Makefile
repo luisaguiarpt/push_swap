@@ -3,8 +3,8 @@ FLAGS=-Wall -Wextra -Werror -g
 
 LIBFTDIR=libft
 LIBFTINC=$(LIBFTDIR)/libft.h
-LIBFTSRC=ft_abs.c ft_atod.c ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
-		 ft_isalpha.c ft_isdigit.c ft_isdouble.c ft_isint.c \
+LIBFTSRC=ft_abs.c ft_atod.c ft_atoi.c ft_atol.c ft_bzero.c ft_calloc.c \
+		 ft_isalnum.c ft_isalpha.c ft_isdigit.c ft_isdouble.c ft_isint.c \
 		 ft_isprint.c ft_itoa.c ft_lstadd_back.c \
 		 ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
 		 ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_max.c \
