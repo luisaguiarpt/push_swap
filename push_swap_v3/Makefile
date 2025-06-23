@@ -6,10 +6,16 @@ SRCS=checks.c \
 	 core_utils.c \
 	 error.c \
 	 free.c \
+	 index.c \
+	 moves.c \
 	 push.c \
 	 push_swap.c \
 	 reverse_rotate.c \
 	 rotate.c \
+	 sort.c \
+	 sort_cost.c \
+	 sort_init.c \
+	 sort_utils.c \
 	 stack.c \
 	 stack_utils.c \
 	 swap.c

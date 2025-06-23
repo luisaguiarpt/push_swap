@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:46:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:04:58 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:37:14 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,25 @@ void	prt_core(t_core *core);
 void		init_stack_a(t_core *core, char **char_arr);
 
 // Main sort - sort.c
+void		sort(t_core *core);
+void		move_cheapest(t_core *core);
 
 // Sort utilities - sort_utils.c
 int			is_sorted(t_stack **head);
 int			is_rev_sorted(t_stack **head);
 t_stack		*get_target(t_stack **b, t_stack *ref);
+t_stack		*get_cheapest(t_core *core);
 
 // Cost - sort_cost.c
 void		upd_cost(t_core *core);
+t_stack		*get_max_index(t_stack **head);
+t_stack		*get_min_index(t_stack **head);
 
 // Moves - moves.c
 void		upd_moves(t_core *core);
+
+// Index - index.c
+void		assign_index(t_core *core);
 
 // Swap operations - swap.c
 int			swap(t_stack **head);

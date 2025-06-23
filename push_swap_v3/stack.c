@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:55:22 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 16:58:41 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:58:22 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ t_stack	*lst_new(int value)
 	new->next = NULL;
 	new->value = value;
 	new->cost = 0;
-	new->chunk = 0;
-	new->i = 0;
+	new->index = 0;
 	return (new);
 }
 
@@ -59,13 +58,7 @@ t_stack	*lst_find(t_stack **head, int value, char attr)
 	lst = *head;
 	while (attr == 'i' && lst)
 	{
-		if (lst->i == value)
-			return (lst);
-		lst = lst->next;
-	}
-	while (attr == 'c' && lst)
-	{
-		if (lst->chunk == value)
+		if (lst->index == value)
 			return (lst);
 		lst = lst->next;
 	}

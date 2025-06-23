@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 15:35:02 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:03:43 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:57:01 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	rra(t_core *core)
 		if (core->print)
 			ft_printf("rra\n");	
 		upd_cost(core);
-		core->tmp_cost += 1;
 		return (1);
 	}
 	return (0);
@@ -47,7 +46,6 @@ int	rrb(t_core *core)
 		if (core->print)
 			ft_printf("rrb\n");	
 		upd_cost(core);
-		core->tmp_cost += 1;
 		return (1);
 	}
 	return (0);
@@ -60,7 +58,6 @@ int	rrr(t_core *core)
 		if (core->print)
 			ft_printf("rrr\n");	
 		upd_cost(core);
-		core->tmp_cost += 1;
 		return (1);
 	}
 	return (0);

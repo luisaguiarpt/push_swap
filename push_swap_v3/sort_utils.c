@@ -28,7 +28,7 @@ t_stack	*get_target(t_stack **b, t_stack *ref)
 	t_stack	*prev;
 
 	diff = INT_MAX;
-	ptr_b = *b;
+	p_b = *b;
 	prev = NULL;
 	while (p_b)
 	{
@@ -41,6 +41,7 @@ t_stack	*get_target(t_stack **b, t_stack *ref)
 	}
 	if (diff == INT_MAX)
 		prev = get_max_index(b);
+	return (prev);
 }
 
 int	is_sorted(t_stack **head)
@@ -51,6 +52,9 @@ int	is_sorted(t_stack **head)
 	while (ptr && ptr->next)
 	{
 		if (ptr->value < ptr->next->value)
+			ptr = ptr->next;
+		else if (ptr->value == get_max_index(head)->value 
+				&& ptr->next->value == get_min_index(head)->value)
 			ptr = ptr->next;
 		else
 			return (0);
@@ -66,6 +70,9 @@ int	is_rev_sorted(t_stack **head)
 	while (ptr && ptr->next)
 	{
 		if (ptr->value > ptr->next->value)
+			ptr = ptr->next;
+		else if (ptr->value == get_min_index(head)->value && 
+				ptr->next->value ==	get_max_index(head)->value)
 			ptr = ptr->next;
 		else
 			return (0);

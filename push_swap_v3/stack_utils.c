@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 12:55:22 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 16:58:41 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:58:47 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	lst_copy(t_stack **orig, t_stack **dest)
 	while (tmp_o)
 	{
 		tmp = lst_new(tmp_o->value);
-		tmp->i = tmp_o->i;
-		tmp->chunk = tmp_o->chunk;
+		tmp->index = tmp_o->index;
 		tmp->cost = tmp_o->cost;
 		lstadd_back(dest, tmp);
 		tmp_o = tmp_o->next;

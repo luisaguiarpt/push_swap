@@ -6,7 +6,6 @@ static void	sort_array(int *array, int size);
 void	init_stack_a(t_core *core, char **char_arr)
 {
 	int	i;
-	int	*sorted_array;
 
 	i = 0;
 	while (char_arr[i])
@@ -15,8 +14,9 @@ void	init_stack_a(t_core *core, char **char_arr)
 		i++;
 	}
 	core->size = lst_size(core->a);
-	core->sorted_array = sort_array(values_array(core, core->size), core->size);
-	upd_moves(core);
+	core->sorted_array = values_array(core, core->size);
+	sort_array(core->sorted_array, core->size);
+	assign_index(core);
 }
 
 static int	*values_array(t_core *core, int size)

@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_cost.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 12:13:53 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/06/23 12:48:21 by ldias-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	calc_cost(t_stack *elem, t_core *core);
-static t_stack	*get_target(t_stack **b, t_stack *ref);
-static t_stack	*get_max_index(t_stack **head);
+t_stack		*get_max_index(t_stack **head);
 
 void	upd_cost(t_core *core)
 {
 	t_stack	*a;
 
 	a = *core->a;
+	upd_moves(core);
 	while (a)
 	{
 		a->cost = calc_cost(a, core);
@@ -22,6 +34,8 @@ static int	calc_cost(t_stack *elem, t_core *core)
 	int		cost;
 
 	target = get_target(core->b, elem);
+	if (!target)
+		target = elem;
 	cost = 0;
 	if (elem->moves >= 0 && target->moves >= 0)
 		cost = ft_max(elem->moves, target->moves);
@@ -34,7 +48,7 @@ static int	calc_cost(t_stack *elem, t_core *core)
 	return (cost);
 }
 
-static t_stack	*get_max_index(t_stack **head)
+t_stack	*get_max_index(t_stack **head)
 {
 	int		max;
 	t_stack	*lst;
@@ -51,6 +65,29 @@ static t_stack	*get_max_index(t_stack **head)
 	while (lst)
 	{
 		if (lst->index == max)
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
+}
+
+t_stack *get_min_index(t_stack **head)
+{
+	int		min;
+	t_stack	*lst;
+
+	lst = *head;
+	min = INT_MAX;
+	while (lst)
+	{
+		if (lst->index < min)
+			min = lst->index;
+		lst = lst->next;
+	}
+	lst = *head;
+	while (lst)
+	{
+		if (lst->index == min)
 			return (lst);
 		lst = lst->next;
 	}
