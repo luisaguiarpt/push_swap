@@ -47,6 +47,9 @@ void		move_cheapest(t_core *core);
 void		rot_max_top(t_core *core);
 void		push_all_a(t_core *core);
 
+// Sort small - sort_small.c
+void		sort_3(t_core *core);
+
 // Sort utilities - sort_utils.c
 int			is_sorted(t_stack **head);
 int			is_rev_sorted(t_stack **head);

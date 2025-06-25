@@ -14,8 +14,27 @@
 
 void	sort_3(t_core *core)
 {
-	t_stack	*lst;
+	t_stack	*high;
+	t_stack	*low;
+	t_stack	**head;
 
-	lst = *core->a;
-	if (
+	head = core->a;
+	high = get_max_index(core->a);
+	low = get_min_index(core->a);
+	if (*head == high)
+		ra(core);
+	else if ((*head)->next == high)
+		rra(core);
+	if (*head != low)
+		sa(core);
+}
+
+void	sort_5(t_core *core)
+{
+	if (is_sorted(core->a))
+		return ;
+	pb(core);
+	pb(core);
+	sort_3(core);
+
 }

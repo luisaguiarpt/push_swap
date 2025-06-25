@@ -15,6 +15,7 @@ SRCS=checks.c \
 	 sort.c \
 	 sort_cost.c \
 	 sort_init.c \
+	 sort_small.c \
 	 sort_utils.c \
 	 stack.c \
 	 stack_utils.c \

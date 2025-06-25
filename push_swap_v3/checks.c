@@ -76,10 +76,8 @@ char	**check_input(char **av, int ac)
 
 void	check_int(t_core *core)
 {
-	int		i;
 	t_stack	*lst;
 
-	i = 0;
 	lst = *core->a;
 	while (lst)
 	{

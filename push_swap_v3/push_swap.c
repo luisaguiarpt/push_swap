@@ -14,8 +14,11 @@ int	main(int ac, char **av)
 	core = init_core();
 	init_stack_a(core, input);
 	if (core->size == 3)
-		sort_small(core);
-	sort(core);
+		sort_3(core);
+//	else if (core->size == 5)
+//		sort_5(core);
+	else
+		sort(core);
 	free_all(core);
 }
 
