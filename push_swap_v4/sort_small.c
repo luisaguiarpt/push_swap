@@ -18,6 +18,11 @@ void	sort_3(t_core *core)
 	t_stack	*low;
 	t_stack	**head;
 
+	if (is_sorted(core, 'a'))
+	{
+		rot_min_top(core, 'a');
+		return ;
+	}
 	head = core->a;
 	high = get_max_index(core->a);
 	low = get_min_index(core->a);
@@ -35,56 +40,23 @@ void	sort_5(t_core *core)
 	t_stack	*target;
 
 	b = core->b;
-	if (is_sorted(core))
+	if (is_sorted(core, 'a'))
+	{
+		rot_min_top(core, 'a');
 		return ;
+	}
 	while (lst_size(core->a) > 3)
 		pb(core);
 	sort_3(core);
-	while (lst_size(core->b))
+	upd_cost(core);
+	while (lst_size(b))
 	{
-		upd_moves(core);
-		target = get_target_a(core->a, *b);
+		target = get_target_above(core->a, *b);
 		while (target->moves > 0)
 			ra(core);
 		while (target->moves < 0)
-		rra(core);
+			rra(core);
 		pa(core);
 	}
-	rot_min_top_a(core);
-}
-
-t_stack	*get_target_a(t_stack **a, t_stack *ref)
-{
-	int		diff;
-	t_stack	*p_a;
-	t_stack	*prev;
-
-	diff = INT_MAX;
-	p_a = *a;
-	prev = NULL;
-	while (p_a)
-	{
-		if (p_a->index > ref->index && ft_abs(p_a->index - ref->index) < diff)
-		{
-			diff = ft_abs(p_a->index - ref->index);
-			prev = p_a;
-		}
-		p_a = p_a->next;
-	}
-	if (diff == INT_MAX)
-		prev = get_min_index(a);
-	return (prev);
-}
-
-void	rot_min_top_a(t_core *core)
-{
-	t_stack	*min;
-
-	min = get_min_index(core->a);
-	if (min->moves < 0)
-		while (*core->a != min)
-			rra(core);
-	else if (min->moves > 0)
-		while (*core->a != min)
-			ra(core);
+	rot_min_top(core, 'a');
 }

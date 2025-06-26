@@ -1,42 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/09 12:36:26 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/10 20:46:06 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isint(char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
-	int	sign;
-	int	number;
+	char			*tmp;
+	int				flag;
+	unsigned char	uc;
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	uc = (unsigned char)c;
+	flag = 0;
+	while (*s)
 	{
-		sign = 1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
+		if (*s == uc)
 		{
-			number = 1;
-			i++;
+			tmp = (char *)s;
+			flag = 1;
 		}
-		else
-			return (0);
+		s++;
 	}
-	return (sign * number + number);
+	if (*s == uc)
+	{
+		tmp = (char *)s;
+		flag = 1;
+	}
+	if (!flag)
+		return (NULL);
+	return (tmp);
 }
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	const char *s = "hello world";
+	int c = 's';
+	char *res = ft_strrchr(s, c);
+	printf("%s\n", res);
+}
+*/

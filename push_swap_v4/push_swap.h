@@ -43,22 +43,20 @@ void		init_stack_a(t_core *core, char **char_arr);
 
 // Main sort - sort.c
 void		sort(t_core *core);
-void		move_cheapest_to_b(t_core *core);
-void		rot_max_top_a(t_core *core);
-void		rot_max_top_b(t_core *core);
-void		push_all_a(t_core *core);
+void		move_cheapest_top_a(t_core *core);
+void		move_cheapest_top_b(t_core *core);
+void		rot_max_top(t_core *core, char stack);
+void		rot_min_top(t_core *core, char stack);
 
 // Sort small - sort_small.c
 void		sort_3(t_core *core);
 void		sort_5(t_core *core);
-t_stack		*get_target_a(t_stack **a, t_stack *ref);
-void		rot_min_top_a(t_core *core);
 
 // Sort utilities - sort_utils.c
-int			is_sorted(t_core *core);
-int			is_rev_sorted(t_stack **head);
-t_stack		*get_cheapest_a(t_core *core);
-t_stack		*get_target(t_stack **stack, t_stack *ref);
+int			is_sorted(t_core *core, char stack);
+t_stack		*get_cheapest(t_stack **head);
+t_stack		*get_target_above(t_stack **stack, t_stack *ref);
+t_stack		*get_target_below(t_stack **stack, t_stack *ref);
 
 // Cost - sort_cost.c
 void		upd_cost(t_core *core);

@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/23 17:10:00 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/22 12:18:50 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_isint(char *str)
-{
-	int	i;
-	int	sign;
-	int	number;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		sign = 1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-		{
-			number = 1;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (sign * number + number);
-}
+# include <unistd.h>
+# include <stdlib.h>
+
+char	*get_next_line(int fd);
+char	*add_line(char *line, char *buf);
+void	shift_buf(char *buf);
+size_t	ft_strlen_t(char *s);
+char	*ft_strchr(const char *s, int c);
+
+#endif

@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/06/23 12:31:22 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/06/23 12:39:25 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_isint(char *str)
+void	assign_index(t_core *core)
 {
-	int	i;
-	int	sign;
-	int	number;
+	int		i;
+	int		size;
+	int		*array;
+	t_stack	*lst;
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	lst = *core->a;
+	size = lst_size(core->a);
+	array = core->sorted_array;
+	while (lst)
 	{
-		sign = 1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
+		i = 0;
+		while (i < size)
 		{
-			number = 1;
+			if (array[i] == lst->value)
+				lst->index = i;
 			i++;
 		}
-		else
-			return (0);
+		lst = lst->next;
 	}
-	return (sign * number + number);
 }

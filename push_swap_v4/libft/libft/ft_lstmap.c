@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/14 15:56:32 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/29 12:53:47 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isint(char *str)
+t_slist	*ft_lstmap(t_slist *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
-	int	sign;
-	int	number;
+	t_slist	*map;
+	t_slist	*node;
+	void	*tmp;
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	map = NULL;
+	while (lst && f && del)
 	{
-		sign = 1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
+		tmp = f(lst->content);
+		if (!tmp)
 		{
-			number = 1;
-			i++;
+			ft_lstclear(&map, del);
+			return (NULL);
 		}
-		else
-			return (0);
+		node = ft_lstnew(tmp);
+		if (!node)
+		{
+			del(tmp);
+			ft_lstclear(&map, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&map, node);
+		lst = lst->next;
 	}
-	return (sign * number + number);
+	return (map);
 }

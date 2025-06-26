@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/10 18:54:15 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/14 14:01:38 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isint(char *str)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
-	int	sign;
-	int	number;
+	unsigned char	*ptr;
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		sign = 1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-		{
-			number = 1;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (sign * number + number);
+	ptr = malloc(size * nmemb);
+	if (!ptr)
+		return (NULL);
+	ptr = ft_memset(ptr, 0, nmemb * size);
+	return (ptr);
 }
+/*
+int	main(void)
+{
+	void	*ptr;
+
+	ptr = 
+}
+//	Had this in the function but caused issues with testing
+//	if (nmemb > (size_t)(-1) / size)
+//		return (NULL);
+*/

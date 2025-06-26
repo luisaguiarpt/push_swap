@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/09 18:11:44 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/10 16:46:12 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isint(char *str)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
-	int	sign;
-	int	number;
+	size_t			i;
+	unsigned char	*u_s1;
+	unsigned char	*u_s2;
 
 	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	u_s1 = (unsigned char *)s1;
+	u_s2 = (unsigned char *)s2;
+	while (s1[i] || s2[i])
 	{
-		sign = 1;
+		if (s1[i] != s2[i])
+			return (u_s1[i] - u_s2[i]);
 		i++;
 	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-		{
-			number = 1;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (sign * number + number);
+	return (0);
 }

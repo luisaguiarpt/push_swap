@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/09 12:31:24 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/10 20:44:37 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isint(char *str)
+char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-	int	sign;
-	int	number;
+	unsigned char	uc;
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	uc = (unsigned char)c;
+	while (*s)
 	{
-		sign = 1;
-		i++;
+		if (*s == uc)
+			return ((char *)s);
+		s++;
 	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-		{
-			number = 1;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (sign * number + number);
+	if (*s == uc)
+		return ((char *)s);
+	return (NULL);
 }
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	const char *s = "teste";
+	int c = '\0';
+	char *res = strchr(s, c);
+
+	printf("%s\n\t%p\n", res, &res);
+}
+*/

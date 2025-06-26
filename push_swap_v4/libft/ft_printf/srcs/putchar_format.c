@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   putchar_format.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/13 14:04:30 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/22 12:59:54 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-int	ft_isint(char *str)
+size_t	putchar_format(char c, t_format *format)
 {
-	int	i;
-	int	sign;
-	int	number;
+	size_t	i;
 
 	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (format->minus)
+		write(1, &c, 1);
+	while (i < format->min - (format->min > 0) * 1)
 	{
-		sign = 1;
+		write(1, " ", 1);
 		i++;
 	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-		{
-			number = 1;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (sign * number + number);
+	if (!format->minus)
+		write(1, &c, 1);
+	return (1 + i);
 }

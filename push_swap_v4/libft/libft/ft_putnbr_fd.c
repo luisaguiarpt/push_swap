@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/13 14:08:49 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/15 10:43:02 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isint(char *str)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
-	int	sign;
-	int	number;
+	char	c;
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (n == INT_MIN)
 	{
-		sign = 1;
-		i++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	while (str[i])
+	if (n < 0)
 	{
-		if (ft_isdigit(str[i]))
-		{
-			number = 1;
-			i++;
-		}
-		else
-			return (0);
+		n = -n;
+		write(fd, "-", 1);
 	}
-	return (sign * number + number);
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	c = (n % 10) + '0';
+	write(fd, &c, 1);
 }
+/*
+int	main(void)
+{
+	int	n = FT_INT_MIN;
+
+	ft_putnbr_fd(n, 1);
+}
+*/

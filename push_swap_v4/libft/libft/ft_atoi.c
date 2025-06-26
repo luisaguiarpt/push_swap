@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 17:29:57 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/06/02 17:32:30 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/09 19:45:18 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/15 11:37:24 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+static int	ft_isspace(char c);
 
-int	ft_isint(char *str)
+int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	number;
+	int	nbr;
+	int	minus;
 
-	i = 0;
-	sign = 0;
-	number = 0;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		sign = 1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-		{
-			number = 1;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (sign * number + number);
+	minus = 1;
+	nbr = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+' || *str == '-')
+		if (*str++ == '-')
+			minus = -1;
+	while (*str >= '0' && *str <= '9')
+		nbr = (nbr * 10) + (*str++ - '0');
+	return (minus * nbr);
+}
+
+static int	ft_isspace(char c)
+{
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (1);
+	return (0);
 }

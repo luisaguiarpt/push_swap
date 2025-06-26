@@ -2,7 +2,7 @@
 
 void	sort(t_core *core)
 {
-	if (is_sorted(core->a))
+	if (is_sorted(core))
 	{
 		free_all(core);
 		exit(0);
@@ -11,19 +11,19 @@ void	sort(t_core *core)
 	{
 		upd_moves(core);
 		upd_cost(core);
-		move_cheapest(core);
+		move_cheapest_to_b(core);
 		pb(core);
 	}
-	rot_max_top(core);
+	rot_max_top_b(core);
 	push_all_a(core);
 }
 
-void	move_cheapest(t_core *core)
+void	move_cheapest_to_b(t_core *core)
 {
 	t_stack	*cheapest;
 	t_stack	*target;
 
-	cheapest = get_cheapest(core);
+	cheapest = get_cheapest_a(core);
 	target = get_target(core->b, cheapest);
 	while (target && cheapest->moves > 0 && target->moves > 0)
 		rr(core);
@@ -45,7 +45,7 @@ void	push_all_a(t_core *core)
 		pa(core);
 }
 
-void	rot_max_top(t_core *core)
+void	rot_max_top_b(t_core *core)
 {
 	t_stack	*max;
 
