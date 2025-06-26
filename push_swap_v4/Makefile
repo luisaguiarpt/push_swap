@@ -64,11 +64,13 @@ $(LIBFT):
 
 clean:
 	rm -rf $(OBJS)
+	rm -rf $(B_OBJS)
 	make -C libft/ clean
 
 fclean: clean
 	make -C libft/ fclean
 	rm -rf $(NAME)
+	rm -rf $(CHECKER)
 
 re: fclean all
 
