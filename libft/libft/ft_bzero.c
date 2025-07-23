@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 19:50:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/04/09 19:50:12 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/09 16:39:39 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/09 21:08:42 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t	len;
+	unsigned char	*tmp;
 
-	len = 0;
-	if (!str)
-		return (0);
-	while (str[len])
-		len++;
-	return (len);
+	tmp = s;
+	while (n--)
+		tmp[n] = 0;
 }

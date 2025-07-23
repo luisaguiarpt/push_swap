@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 17:34:13 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/07/23 19:00:32 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/07/23 23:25:23 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,13 @@ char	**check_input(char **av, int ac)
 	char	**array;
 
 	array = NULL;
-	if (ac == 1)
-		exit_error();
-	else if (ac == 2)
+	if (ac == 2)
 	{
 		array = ft_split(av[0], ' ');
 		if (check_array(array) || check_dup(array))
 		{
-			free(array);
+			ft_free_tab(array);
+			//free(array);
 			exit_error();
 		}
 	}

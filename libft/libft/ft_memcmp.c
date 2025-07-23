@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 19:50:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/04/09 19:50:12 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/09 19:32:07 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/10 18:24:39 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	len;
+	unsigned const char	*t1;
+	unsigned const char	*t2;
 
-	len = 0;
-	if (!str)
+	t1 = (unsigned const char *)s1;
+	t2 = (unsigned const char *)s2;
+	if (n == 0)
 		return (0);
-	while (str[len])
-		len++;
-	return (len);
+	while (n--)
+		if (*t1++ != *t2++)
+			return (*(--t1) - *(--t2));
+	return (0);
 }
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*s1 = "abcdefghij";
+	char	*s2 = "abcdefgxyz";
+	int		res = ft_memcmp(s1, s2, 7);
+
+	printf("%i\n", res);
+}
+*/

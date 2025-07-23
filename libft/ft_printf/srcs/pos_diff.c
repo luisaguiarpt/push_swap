@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   pos_diff.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 19:50:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/04/09 19:50:12 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/29 18:31:36 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/22 13:01:49 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+size_t	pos_diff_ui(size_t a, size_t b)
 {
-	size_t	len;
+	long int	la;
+	long int	lb;
+	long int	diff;
 
-	len = 0;
-	if (!str)
+	la = (long int)a;
+	lb = (long int)b;
+	diff = la - lb;
+	if (diff >= 0)
+		return ((size_t)diff);
+	else
 		return (0);
-	while (str[len])
-		len++;
-	return (len);
 }

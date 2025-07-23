@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 19:50:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/04/09 19:50:12 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/13 14:03:51 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/04/15 13:43:22 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	len;
+	unsigned int	i;
+	unsigned int	len;
+	char			*res;
 
-	len = 0;
-	if (!str)
-		return (0);
-	while (str[len])
-		len++;
-	return (len);
+	if (!s || !f)
+		return (NULL);
+	len = (unsigned int)ft_strlen(s);
+	res = (char *)ft_calloc((len + 1), sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		res[i] = f(i, s[i]);
+		i++;
+	}
+	return (res);
 }

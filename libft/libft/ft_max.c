@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 19:50:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/04/09 19:50:12 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/05/28 17:51:10 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/28 17:52:21 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *str)
+int	ft_max(int a, int b)
 {
-	size_t	len;
+	if (a >= b)
+		return (a);
+	else
+		return (b);
+}
 
-	len = 0;
-	if (!str)
-		return (0);
-	while (str[len])
-		len++;
-	return (len);
+double	ft_max_dbl(double a, double b)
+{
+	if (a >= b)
+		return (a);
+	else
+		return (b);
 }

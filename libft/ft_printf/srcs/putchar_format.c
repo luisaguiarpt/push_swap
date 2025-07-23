@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   putchar_format.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 19:50:06 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/04/09 19:50:12 by ldias-da         ###   ########.fr       */
+/*   Created: 2025/04/13 14:04:30 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/22 12:59:54 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+size_t	putchar_format(char c, t_format *format)
 {
-	size_t	len;
+	size_t	i;
 
-	len = 0;
-	if (!str)
-		return (0);
-	while (str[len])
-		len++;
-	return (len);
+	i = 0;
+	if (format->minus)
+		write(1, &c, 1);
+	while (i < format->min - (format->min > 0) * 1)
+	{
+		write(1, " ", 1);
+		i++;
+	}
+	if (!format->minus)
+		write(1, &c, 1);
+	return (1 + i);
 }
