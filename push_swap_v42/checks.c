@@ -77,7 +77,7 @@ int	check_dup_lst(t_stack **head)
 	return (0);
 }
 
-char	**check_input(char **av, int ac)
+char	**check_input(int *input_array, char **av, int ac)
 {
 	char	**array;
 
@@ -90,6 +90,7 @@ char	**check_input(char **av, int ac)
 			ft_free_tab(array);
 			exit_error();
 		}
+		*input_array = 1;
 	}
 	else if (ac > 2)
 	{

@@ -25,6 +25,8 @@ void	free_error(t_core *core)
 	free(core->b);
 	if (core->sorted_array)
 		free(core->sorted_array);
+	if (core->input_arr)
+		ft_free_tab(core->input_arr);
 	free(core);
 	exit_error();
 }

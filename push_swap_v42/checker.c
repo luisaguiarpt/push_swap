@@ -16,26 +16,34 @@ int	main(int ac, char **av)
 {
 	char	**input;
 	t_core	*core;
+	int		input_array;
 
 	if (ac == 1)
 		exit(1);
-	input = check_input(&av[1], ac);
+	input_array = 0;
+	input = check_input(&input_array, &av[1], ac);
 	core = init_core();
+	core->input_arr = input;
 	init_stack_a(core, input);
 	core->print = 0;
 	checker(core);
+	if (input_array)
+		ft_free_tab(input);
 	free_all(core);
 }
 
 void	checker(t_core *core)
 {
 	char	*line;
+	char	*trim_line;
 
 	line = get_next_line(0);
 	while (line)
 	{
-		do_op(core, ft_strtrim(line, "\n"));
+		trim_line = ft_strtrim(line, "\n");
+		do_op(core, trim_line);
 		free(line);
+		free(trim_line);
 		line = get_next_line(0);
 	}
 	if (is_ok(core))

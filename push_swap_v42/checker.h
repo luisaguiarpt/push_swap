@@ -30,6 +30,8 @@ typedef struct s_core
 {
 	t_stack	**a;
 	t_stack	**b;
+	int		input_array;
+	char	**input_arr;
 	int		size;
 	int		print;
 	int		*sorted_array;
@@ -103,7 +105,7 @@ int			rrr(t_core *core);
 // Checker functions - checks.c
 int			check_array(char **array);
 int			check_dup(char **array);
-char		**check_input(char **av, int ac);
+char		**check_input(int *input_array, char **av, int ac);
 void		check_int(t_core *core);
 int			check_dup_lst(t_stack **head);
 

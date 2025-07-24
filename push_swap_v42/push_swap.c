@@ -16,13 +16,14 @@ int	main(int ac, char **av)
 {
 	t_core	*core;
 	char	**input;
+	int		input_array;
 
+	input_array = 0;
 	if (ac == 1)
 		exit(1);
-	if (ac < 2)
-		exit_error();
-	input = check_input(&av[1], ac);
+	input = check_input(&input_array, &av[1], ac);
 	core = init_core();
+	core->input_arr = input;
 	init_stack_a(core, input);
 	if (core->size <= 3)
 		sort_3(core);
@@ -30,5 +31,7 @@ int	main(int ac, char **av)
 		sort_5(core);
 	else
 		sort(core);
+	if (input_array)
+		ft_free_tab(input);
 	free_all(core);
 }

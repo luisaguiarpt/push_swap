@@ -29,6 +29,7 @@ t_core	*init_core(void)
 	*core->b = NULL;
 	core->size = 0;
 	core->print = 1;
+	core->input_array = 0;
 	return (core);
 }
 
