@@ -88,7 +88,6 @@ char	**check_input(char **av, int ac)
 		if (check_array(array) || check_dup(array))
 		{
 			ft_free_tab(array);
-			//free(array);
 			exit_error();
 		}
 	}

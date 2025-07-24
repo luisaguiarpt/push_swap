@@ -17,8 +17,8 @@ int	main(int ac, char **av)
 	char	**input;
 	t_core	*core;
 
-	if (ac < 2)
-		exit_error();
+	if (ac == 1)
+		exit(1);
 	input = check_input(&av[1], ac);
 	core = init_core();
 	init_stack_a(core, input);
@@ -49,7 +49,7 @@ int	is_ok(t_core *core)
 	t_stack	*prev;
 
 	prev = *core->a;
-	while (prev->next)
+	while (prev && prev->next)
 	{
 		if (prev->value < prev->next->value)
 			prev = prev->next;
